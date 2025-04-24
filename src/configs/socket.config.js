@@ -104,6 +104,7 @@ io.on("connection", (socket) => {
   socket.on("addUser", async (payload) => {
     userList[payload] = socket.id;
     socketList[socket.id] = payload;
+    console.log(userList);
   });
 
   socket.on("read", async (payload) => {
