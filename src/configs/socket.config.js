@@ -51,7 +51,6 @@ const removeUserFromList = (socketId) => {
 };
 
 io.on("connection", (socket) => {
-  console.log("User connected", socket.id);
   socket.on("message", async (payload, file = null) => {
     try {
       if (typeof payload !== "object") {
@@ -77,8 +76,6 @@ io.on("connection", (socket) => {
         filePath = filePath.replace("src/", "/");
       }
 
-      console.log(senderId, receiverId);
-
       const message = await Message.create({
         senderId,
         receiverId,
@@ -87,6 +84,7 @@ io.on("connection", (socket) => {
       });
 
       const receiverSocketId = userList[receiverId];
+      console.log(socket.id, receiverSocketId);
       socket.to(receiverSocketId).emit("message", {
         senderId,
         text,
