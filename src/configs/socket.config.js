@@ -70,6 +70,7 @@ io.on("connection", (socket) => {
         });
       }
       let filePath = null;
+      console.log(file, filePath);
       if (file) {
         text = null;
         filePath = await saveFile(file);
@@ -84,7 +85,6 @@ io.on("connection", (socket) => {
       });
 
       const receiverSocketId = userList[receiverId];
-      console.log(socket.id, receiverSocketId);
       socket.to(receiverSocketId).emit("message", {
         senderId,
         text,
