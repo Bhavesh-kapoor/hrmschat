@@ -100,6 +100,9 @@ io.on("connection", (socket) => {
   });
 
   socket.on("addUser", async (payload) => {
+    if(typeof payload !== "string"){
+      return;
+    }
     userList[payload] = socket.id;
     socketList[socket.id] = payload;
     console.log(userList);
