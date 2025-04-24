@@ -77,6 +77,8 @@ io.on("connection", (socket) => {
         filePath = filePath.replace("src/", "/");
       }
 
+      console.log(senderId, receiverId);
+
       const message = await Message.create({
         senderId,
         receiverId,
