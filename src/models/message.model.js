@@ -6,11 +6,11 @@ class Message extends BaseModel {}
 Message.initialize(
   {
     receiverId: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     senderId: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     text: {
